@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { DefaultTheme } from 'styled-components'
-import useColorScheme from '../../hooks/useColorScheme'
-import { IUIContext, ThemeMode } from '../../utils/types'
+import { ThemeMode } from '../../utils/types'
 import UIContext, { defaultContext } from './UIContext'
 
 interface Props {
@@ -12,10 +11,6 @@ const UIContextProvider: React.FC<Props> = ({ children }) => {
   const [theme, setTheme] = useState<DefaultTheme>({
     mode: defaultContext.theme.mode
   })
-
-  const userPreferredScheme = useColorScheme()
-
-  console.log(userPreferredScheme)
 
   function changeMode(mode: ThemeMode) {
     setTheme(prevTheme => ({ ...prevTheme, mode: mode }))
